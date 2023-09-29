@@ -44,19 +44,19 @@ form.addEventListener('submit', function (event) {
 
   //Password validation
   const valorPassowrd = PasswordInput.value;
-  if (!valorPassowrd.length < 6) {
+  if (valorPassowrd.length < 6) {
     msgErrorPassword.textContent = 'El password debe ser mayor de 6';
-  }
 
-  const regex = new RegExp(
-    /^(?=.*[A-Z])(?=.*[~!@#\$%\^&\*\(\)_\+\-=\{\}\|\[\]\\:";'<>?,./])(?=.*[a-z])(?=.*\d).{8,}$/
-  );
-  const isValidPassword = regex.test(valorPassowrd);
-  if (!isValidPassword) {
-    msgErrorPassword.textContent = 'El password no es correcto';
+  } else if(!valorPassowrd.length < 6){
+    const regex2 = /^(?=.*[A-Z])(?=.*[~!@#\$%\^&\*\(\)_\+\-=\{\}\|\[\]\\:";'<>?,./])(?=.*[a-z])(?=.*\d).{8,}$/;
+    if (valorPassowrd.match(regex2) !== null) {
+      msgErrorPassword.textContent = '';
+    } else {
+        msgErrorPassword.textContent = 'El password no es correcto!';
+    }
+  } else {
+    msgErrorPassword.textContent = '';
   }
-
-  msgErrorPassword.textContent = '';
 
   const password2 = PasswordConfirmInput.value;
   if (password2.length < 1) {
