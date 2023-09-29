@@ -44,14 +44,19 @@ form.addEventListener('submit', function (event) {
 
   //Password validation
   const valorPassowrd = PasswordInput.value;
-  if (valorPassowrd.length < 6) {
+  if (!valorPassowrd.length < 6) {
     msgErrorPassword.textContent = 'El password debe ser mayor de 6';
-    const regex = new RegExp(/^(?=.*[A-Z])(?=.*[~!@#\$%\^&\*\(\)_\+\-=\{\}\|\[\]\\:";'<>?,./])(?=.*[a-z])(?=.*\d).{8,}$/);
-    const isValidPassword = regex.test(valorPassowrd);
-
-  } else {
-    msgErrorPassword.textContent = '';
   }
+
+  const regex = new RegExp(
+    /^(?=.*[A-Z])(?=.*[~!@#\$%\^&\*\(\)_\+\-=\{\}\|\[\]\\:";'<>?,./])(?=.*[a-z])(?=.*\d).{8,}$/
+  );
+  const isValidPassword = regex.test(valorPassowrd);
+  if (!isValidPassword) {
+    msgErrorPassword.textContent = 'El password no es correcto';
+  }
+
+  msgErrorPassword.textContent = '';
 
   const password2 = PasswordConfirmInput.value;
   if (password2.length < 1) {
@@ -64,7 +69,7 @@ form.addEventListener('submit', function (event) {
 
   //age validation
   const age = ageInput.value;
-  if(age.length >= 0 || age.length < 1000){
+  if (age.length >= 0 || age.length < 1000) {
     msgErrorAge.textContent = '';
   } else {
     msgErrorAge.textContent = 'Tu edad debe estar entre 0 y 1000';
