@@ -1,17 +1,46 @@
 const selectMoneda = document.getElementById('tipo-moneda');
-selectMoneda.addEventListener('change', addTipoMoneda);
 const container = document.querySelector('.container');
 const seats = document.querySelectorAll('.row .sitio:not(.ocupado)');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const selectPelicula = document.getElementById('pelicula');
 
+let rate_calc = 0;
+returnData();
+
+function addTipoMoneda(change = null) {
+  const tipo_modena = selectMoneda.value;
+  localStorage.setItem('moneda', selectMoneda.selectMoneda);
+  fetch(
+    `https://v6.exchangerate-api.com/v6/a68c1f88285612f28dc13443/latest/${tipo_modena}`
+  )
+  .then((res) => res.json())
+  .then((data) => {
+    //0.1983 USD
+   rate_calc = data.conversion_rates['USD'];
+   calcPrice();
+  })
+}
+addTipoMoneda();
+selectMoneda.addEventListener('change', addTipoMoneda);
+
 let ticketPrice = selectPelicula.value;
 
-returnData();
+function calcPrice() {
+  ticketPrice = (ticketPrice / rate_calc).toFixed(2);
+  updateTicketSelect();
+}
 
 function returnData() {
   const selectedSeats = JSON.parse(localStorage.getItem('seats'));
+  const modena = localStorage.getItem('moneda');
+  const movieSelectedIndex = localStorage.getItem('movie');
+  if(modena === null) return;
+  selectMoneda.selectedIndex = modena;
+
+  if(movieSelectedIndex === null) return;
+  selectPelicula.selectedIndex = movieSelectedIndex;
+
   if (
     selectedSeats.length <= 0 ||
     selectedSeats === null ||
@@ -25,20 +54,8 @@ function returnData() {
   });
 }
 
-function addTipoMoneda() {
-  const tipo_modena = selectMoneda.value;
-  fetch(
-    `https://v6.exchangerate-api.com/v6/a68c1f88285612f28dc13443/latest/${tipo_modena}`
-  )
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);  
-  })
-}
-
 function updateTicketSelect() {
   const selectedSeats = document.querySelectorAll('.row .sitio.selected');
-
   //analizarlo
   const sitiosIndex = [...selectedSeats].map((sitio) =>
     [...seats].indexOf(sitio)
@@ -50,10 +67,9 @@ function updateTicketSelect() {
 }
 
 selectPelicula.addEventListener('change', (e) => {
-  ticketPrice = e.target.value;
   localStorage.setItem('movie', e.target.selectedIndex);
   localStorage.setItem('ticketPrice', ticketPrice);
-  updateTicketSelect();
+  calcPrice();
 });
 
 container.addEventListener('click', (e) => {

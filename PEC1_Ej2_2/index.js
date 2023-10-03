@@ -25,6 +25,7 @@ function calculate() {
         loading.style.display = 'display';
       }, 700)
 
+      // console.log(currency_two_calulate);
       const rate_calc = data.conversion_rates[currency_two_calulate];
       rate.innerText = `1 ${currency_one_calulate} = ${rate_calc} ${currency_one_calulate}`;
 
