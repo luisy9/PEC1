@@ -1,3 +1,5 @@
+const selectMoneda = document.getElementById('tipo-moneda');
+selectMoneda.addEventListener('change', addTipoMoneda);
 const container = document.querySelector('.container');
 const seats = document.querySelectorAll('.row .sitio:not(.ocupado)');
 const count = document.getElementById('count');
@@ -23,9 +25,20 @@ function returnData() {
   });
 }
 
+function addTipoMoneda() {
+  const tipo_modena = selectMoneda.value;
+  fetch(
+    `https://v6.exchangerate-api.com/v6/a68c1f88285612f28dc13443/latest/${tipo_modena}`
+  )
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);  
+  })
+}
+
 function updateTicketSelect() {
   const selectedSeats = document.querySelectorAll('.row .sitio.selected');
-  
+
   //analizarlo
   const sitiosIndex = [...selectedSeats].map((sitio) =>
     [...seats].indexOf(sitio)

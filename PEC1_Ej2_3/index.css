@@ -16,6 +16,10 @@ body {
   margin: 0;
 }
 
+select {
+  border-radius: 5px;
+}
+
 .sitio {
   background-color: #444451;
   height: 12px;
@@ -98,4 +102,14 @@ p.text {
 
 p.text span {
     color: #6feaf6;
+}
+
+.divCurrency {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.divCurrency .select_container {
+  margin-left: 14px;
 }
