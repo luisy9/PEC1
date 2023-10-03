@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Cine Barcelona</title>
+  </head>
+  <body>
+    <div class="container-cine">
+      <labale>Escoje una pelicula:</labale>
+      <select id="pelicula">
+        <option value="10">Los Vengadores (10$)</option>
+        <option value="12">Star Wars (12$)</option>
+        <option value="18">Need for Speed (18$)</option>
+        <option value="8">Toy Story (8$)</option>
+      </select>
+    </div>
+
+    <ul class="leyenda">
+      <li>
+        <div class="sitio">
+        </div>
+        <small>N/A</small>
+      </li>
+      <li>
+        <div class="sitio selected">
+        </div>
+        <small>Seleccionado</small>
+      </li>
+      <li>
+        <div class="sitio ocupado">
+        </div>
+        <small>Ocupados</small>
+      </li>
+    </ul>
+
+    <div class="container">
+        <div class="pantalla"></div>
+        <div class="row">
+          <div class="sitio"></div>
+          <div class="sitio"></div>
+          <div class="sitio"></div>
+          <div class="sitio"></div>
+          <div class="sitio"></div>
+          <div class="sitio"></div>
+          <div class="sitio ocupado"></div>
+          <div class="sitio ocupado"></div>
+        </div>
+        <div class="row">
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio ocupado"></div>
+        </div>
+        <div class="row">
+            <div class="sitio"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+        </div>
+        <div class="row">
+            <div class="sitio ocupado"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio ocupado"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+            <div class="sitio"></div>
+        </div>
+      </div>
+    </div>
+    <p class="text">Has seleccionado <span id="count">0</span> asientos por el precio de $<span id="total">0</span></p>
+    <script src="index.js"></script>
+  </body>
+</html>

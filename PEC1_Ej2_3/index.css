@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Lato&family=Roboto:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #242333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Lato', 'sans-serif';
+  margin: 0;
+}
+
+.sitio {
+  background-color: #444451;
+  height: 12px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+.sitio.ocupado {
+  background-color: white;
+}
+
+.sitio.selected {
+  background-color: #6feaf6;
+}
+
+.sitio:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.sitio:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.sitio:not(.ocupado):hover {
+  cursor: pointer;
+  background-color: #6feaf6;
+  transform: scale(1.2);
+}
+
+.leyenda .sitio:not(.pantalla):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.leyenda {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leyenda li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.leyenda li small {
+  margin-left: 2px;
+}
+
+
+.pantalla {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 10px;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px rgba(255,255,255,0.7);
+}
+
+.container {
+    perspective: 1000px;
+    margin: 2rem;
+}
+
+p.text {
+    margin: 5px 0;
+}
+
+p.text span {
+    color: #6feaf6;
+}
